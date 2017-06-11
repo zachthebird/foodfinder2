@@ -1,0 +1,14 @@
+.artiBox{
+    border: solid;
+    border-radius: 15px;
+    width: 100%;
+    border-color: darkblue;
+    border-width: 3px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    list-style-type: none;
+}
+
+.btn-success{
+    margin-bottom: 5px;
+}
