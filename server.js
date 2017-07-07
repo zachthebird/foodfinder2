@@ -22,19 +22,19 @@ app.use(express.static("./public"));
 // -------------------------------------------------
 
 // MongoDB Configuration configuration (Change this URL to your own DB)
-mongoose.connect('mongodb://localhost/nytReact');
+// mongoose.connect('mongodb://localhost/nytReact');
 
-var db = mongoose.createConnection('mongodb://localhost/nytReact');
+// var db = mongoose.createConnection('mongodb://localhost/nytReact');
 
-db.on("error", function(err) {
-  console.log("Mongoose Error: ", err);
-});
+// db.on("error", function(err) {
+//   console.log("Mongoose Error: ", err);
+// });
 
-db.once("open", function() {
-  console.log("Mongoose connection successful.");
-});
+// db.once("open", function() {
+//   console.log("Mongoose connection successful.");
+// });
 
-// -------------------------------------------------
+// // -------------------------------------------------
 
 // Main "/" Route. This will redirect the user to our rendered React application
 app.get("/", function(req, res) {
