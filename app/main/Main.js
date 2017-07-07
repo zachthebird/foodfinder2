@@ -4,8 +4,10 @@ import axios from 'axios';
 
 import Header from './components/Header';
 import Results from './components/Results';
-import Search from './components/Search';
-import SavedArtis from './components/SavedArtis';
+import UserInput from './components/UserInput';
+import Filters from './components/Filters';
+//import Search from './components/Search';
+//import SavedArtis from './components/SavedArtis';
 
 class Main extends Component {
     constructor(){

@@ -2,11 +2,11 @@
 import React, { Component } from "react";
 import axios from 'axios';
 
-import NavBar from './NavBar';
+import NavBar from './Header';
 import Filters from './Filters';
-import Search from './Search';
+//import Search from './Search';
 
-class SavedArtis extends Component {
+class Results extends Component {
     constructor(){
         super();
     }
