@@ -23,7 +23,8 @@
     "mongoose": "^4.10.5",
     "morgan": "^1.8.2",
     "react": "^15.5.4",
-    "react-dom": "^15.5.4"
+    "react-dom": "^15.5.4",
+    "react-rangeslider": "^2.1.0"
   },
   "devDependencies": {
     "babel-core": "^6.21.0",

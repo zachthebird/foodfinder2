@@ -16,11 +16,11 @@ class Main extends Component {
             results: [],
             data: []
         }
-        this.getArtis = this.getArtis.bind(this);
+        this.searchYelp = this.searchYelp.bind(this);
         this.handleSave = this.handleSave.bind(this);
     };
 
-    getArtis(event){
+    searchYelp(event){
         
         event.preventDefault();
         // console.log(this.data-pub_date);
@@ -55,7 +55,7 @@ class Main extends Component {
         return(
             <div>
                 <Header/>
-                <UserInput getArtis={this.getArtis} />
+                <UserInput searchYelp={this.searchYelp} />
                 <Filters data={this.state.data} saveArti={this.saveArtis}/>
                 <Results />
             </div>

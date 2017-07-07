@@ -1,28 +1,17 @@
 import React, { Component } from 'react';
+import Slider from 'react-rangeslider';
 
 class UserInput extends Component {
     constructor(){
         super();
 
         this.state = {
-            topic: ' ',
-            startYear: ' ',
-            endYear: ' '
+            zipCode: ' ',
+            searchRadius: 5,
         }
-        this.handleSave = this.handleSave.bind(this);
     }
 
-    handleSave(){
-        const artiHeadline = event.target.data-url;
-        const artiUrl = event.target.data-headline;
-        const artiPubDate = event.target.data-pubdate;
-        this.setState({
-            headline: artiHeadline,
-            url: artiUrl,
-            pubDate: artiPubDate
-        })
-    }
-
+    
     render(){
         return(
             // this.props.data.map()
@@ -31,31 +20,43 @@ class UserInput extends Component {
                     <h2>UserInput</h2>
                 </div>
                 <div className='panel-body text-center'>
-                    <ul>
-                        {/*{ this.props.data.map((doc, index) => {
-                                                    return (
-                                                        <div className='container artiBox'>
-                                                            <span>
-                                                                <li key={index}>
-                                                                    <h3>{doc.headline.print_headline}</h3>
-                                                                    <p>{doc.lead_paragraph}</p>
-                                                                    <span>
-                                                                        <div className='panel panel-default col-lg-4'>
-                                                                            <h4 className='panel-heading'>Date:</h4>
-                                                                            <p className='panel-body'>{doc.pub_date}</p>
-                                                                        </div>
-                                                                        <div className='panel panel-default col-lg-8'>
-                                                                            <h4 className='panel-heading'>URL:</h4>
-                                                                            <p className='panel-body'>{doc.web_url}</p>
-                                                                        </div>
-                                                                        <button onClick={this.props.saveArti}  key={index} className='btn-success' data-headline={doc.headline.print_headline} data-pubdate={doc.pub_date} data-url={doc.web_url}>Submit</button>
-                                                                    </span>
-                                                                </li>
-                                                            </span>
-                                                        </div>
-                                                    )
-                                                })}*/}
-                    </ul>
+                     <div className='form-group'>
+                        <label className='control-label col-sm-1' htmlFor='zipCode'>zipCode: </label>
+                        <div className='col-sm-11'>
+                            <input
+                                className='form-control'
+                                name='topic'
+                                id='topic'
+                                type='text'
+                                value={this.state.zipCode}
+                                onChange={
+                                    (event) => {
+                                        console.log(this.state);
+                                        this.setState({
+                                            zipCode: event.target.value
+                                        })
+                                    }
+                                } />
+                        </div>
+                    </div>
+                    <label style={{paddingLeft: '5px'}} className='control-label col-sm-1' htmlFor='searchRadius'>searchRadius: </label>
+                    <div className='col-sm-11'>
+                        <Slider
+                            min={1}
+                            max={25}
+                            step={1}
+                            value={this.state.searchRadius}
+                            orientation="horizontal"
+                            onChange={
+                                (event) => {
+                                    console.log(this.state);
+                                    this.setState({
+                                        searchRadius: event.target.value
+                                    })
+                                }
+                            } />
+                    </div>
+                    <button type='submit' className='btn btn-success success' onClick={this.props.searchYelp}>Search</button>
                 </div>
             </div>
         )
