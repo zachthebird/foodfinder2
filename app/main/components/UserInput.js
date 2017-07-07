@@ -6,12 +6,12 @@ class UserInput extends Component {
         super();
 
         this.state = {
-            zipCode: ' ',
+            zipCode: '78704',
             searchRadius: 5,
         }
     }
 
-    
+
     render(){
         return(
             // this.props.data.map()
@@ -56,12 +56,11 @@ class UserInput extends Component {
                                 }
                             } />
                     </div>
-                    <button type='submit' className='btn btn-success success' onClick={this.props.searchYelp}>Search</button>
+                    <button type='submit' className='btn btn-success success' onClick={this.props.searchYelp(this.state.zipCode, this.state.searchRadius)}>Search</button>
                 </div>
             </div>
         )
-    }      
+    }
 }
 
 export default UserInput;
-
