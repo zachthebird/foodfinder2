@@ -15,10 +15,12 @@ class Results extends Component {
     renderResults() {
         return this.props.results.map(function(result) {
             return (
-                <h2>{result.name}<br/>
-                    {result.location.address1} {result.location.address2}
-                    {result.location.city}, {result.location.state} {result.location.zip_code}</h2>
-
+                <div className='card blue-grey darken-1'>
+                    <h5>{result.name}<br/>
+                        {result.location.address1} {result.location.address2}
+                        {result.location.city}, {result.location.state} {result.location.zip_code}
+                    </h5>
+                </div>
             )
         })
     }

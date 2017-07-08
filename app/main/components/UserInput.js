@@ -61,7 +61,7 @@ class UserInput extends Component {
                             } />*/}
                              {/*<form action="#">*/}
                                 <p className="range-field">
-                                <input type="range" id="test5" min="0" max="25" step='1' start={5} />
+                                <input type="range" id="test5" min="0" max="25" step='1' start="5" />
                                 </p>
                             {/*</form>*/}
         
