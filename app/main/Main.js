@@ -7,10 +7,9 @@ import Results from './components/Results';
 import UserInput from './components/UserInput';
 import Filters from './components/Filters';
 import APIData from '../utils/APIData'
-//import Search from './components/Search';
-//import SavedArtis from './components/SavedArtis';
 
-const yelp = require('yelp-fusion');
+
+// const yelp = require('yelp-fusion');
 
 class Main extends Component {
     constructor(){
@@ -50,8 +49,8 @@ class Main extends Component {
         var formattedZip = zipCode;
         var formattedRadius = searchRadius;
 
-        console.log(formattedZip);
-        console.log(formattedRadius);
+        console.log('formatted zip: '+formattedZip);
+        console.log('formatted radius: '+formattedRadius);
         
         const accessToken = (clientId, clientSecret) => {
             return axios({
