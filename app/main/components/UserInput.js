@@ -45,7 +45,7 @@ class UserInput extends Component {
                     </div>
                     <label style={{paddingLeft: '5px'}} className='control-label col-sm-1' htmlFor='searchRadius'>searchRadius: </label>
                     <div className='col-sm-11'>
-                        <Slider
+                        {/*<Slider
                             min={1}
                             max={25}
                             step={1}
@@ -58,7 +58,13 @@ class UserInput extends Component {
                                         searchRadius: event.target.value
                                     })
                                 }
-                            } />
+                            } />*/}
+                             {/*<form action="#">*/}
+                                <p className="range-field">
+                                <input type="range" id="test5" min="0" max="25" step='1' start={5} />
+                                </p>
+                            {/*</form>*/}
+        
                     </div>
                     <button type='submit' className='btn btn-success success'>Search</button>
                 </div>
