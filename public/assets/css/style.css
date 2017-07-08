@@ -11,4 +11,18 @@
 
 .btn-success{
     margin-bottom: 5px;
+    margin: 20px 20px;
+}
+
+body {
+    background-color: lightskyblue;
+}
+
+panel {
+    background-color: white;
+}
+
+.col-lg-10 {
+    padding-left: 0;
+    padding-right:0;
 }
