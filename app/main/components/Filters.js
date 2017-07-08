@@ -6,10 +6,19 @@ class Filters extends Component {
 
     }
 
-    
+    renderResults() {
+          return this.props.results.map(function(result) {
+              return (
+                <button className='btn filter-btn btn-success'>{result.categories[0].alias}</button>
+
+              )
+          })
+      }
+
+
     render(){
         const buttonClasses = {
-            
+
         }
         return(
             <div className='panel panel-default col-lg-10 col-lg-offset-1'>
@@ -18,12 +27,7 @@ class Filters extends Component {
                 </div>
                 <div className='panel-body text-center'>
                     <div className='row'>
-                        <button onClick={()=>{addClass('active')}} className='btn filter-btn btn-success'>Open Now</button>
-                        <button onClick={()=>{addClass('active')}} className='btn filter-btn btn-success'>Take Out</button>
-                        <button onClick={()=>{addClass('active')}} className='btn filter-btn btn-success'>Mexican</button>
-                        <button onClick={()=>{addClass('active')}} className='btn filter-btn btn-success'>Asian</button>
-                        <button onClick={()=>{addClass('active')}} className='btn filter-btn btn-success'>American</button>
-                        <button onClick={()=>{addClass('active')}} className='btn filter-btn btn-success'>Serves Alcohol</button>
+                        {this.renderResults()}
                     </div>
                 </div>
             </div>

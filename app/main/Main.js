@@ -6,10 +6,11 @@ import Header from './components/Header';
 import Results from './components/Results';
 import UserInput from './components/UserInput';
 import Filters from './components/Filters';
-import APIData from '../utils/APIData'
+import yelpData from '../utils/yelpData';
+//import Search from './components/Search';
+//import SavedArtis from './components/SavedArtis';
 
-
-// const yelp = require('yelp-fusion');
+const yelp = require('yelp-fusion');
 
 class Main extends Component {
     constructor(){
@@ -18,103 +19,120 @@ class Main extends Component {
             results: [],
             data: []
         }
-        this.searchYelp = this.searchYelp.bind(this);
+
         this.handleSave = this.handleSave.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     };
 
-    searchYelp(zipCode, searchRadius){
-
-        //event.preventDefault();
-        console.log('QUERY');
-        // console.log(this.data-pub_date);
-        // console.log(this.data-web_url);
-        // console.log(this.data-headline);
-
-        // var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
-        //     url += '?' + $.param({
-        //     'api-key': "3d5b23b0b3544196a159cca09bda093c",
-        //     'q': "guns",
-        //     'begin_date': "20150101",
-        //     'end_date': "20161231",
-        //     'sort': "newest"
-        // });
-        // axios.get(url).then((results) => {
-        //     console.log(results);
-        //     this.setState({
-        //         data: results.data.response.docs
-        //     })
-        // })
-        // update state to store data in results
-
-        var formattedZip = zipCode;
-        var formattedRadius = searchRadius;
-
-        console.log('formatted zip: '+formattedZip);
-        console.log('formatted radius: '+formattedRadius);
-        
-        const accessToken = (clientId, clientSecret) => {
-            return axios({
-                url: 'https://api.yelp.com/oauth2/token',
-                method: 'post',
-                header: '',
-                urlencodedBody: {
-                grant_type: 'client_credentials',
-                client_id: APIData.client_Id,
-                client_secret: APIData.client_Secret
-                }
-            });
-            console.log(res);
-        };
-
-        const createClient = (token) => {
-            return new YelpClient(token);
-        };
-
-        class YelpClient {
-            constructor(token){
-            this.token = token;
-            }
-
-            search(parameters){
-            return axios({
-                url: 'https://api.yelp.com/v3/businesses/search',
-                query: {
-                  location: formattedZip,
-                  radius: formattedRadius
-                },
-                bearerToken: this.token
-                });
-            }
-        };
-
-
-
-        // yelp.accessToken(APIData.client_Id, APIData.client_Secret).then(response => {
-
-        // const client = yelp.client(response.jsonBody.access_token);
-
-        // client.search().then(response => {
-        //   console.log(response.jsonBody.businesses[0].name);
-        // });
-        // }).catch(e => {
-        //   console.log(e);
-        // });
-    }
-
-    handleSave(event){
+    handleSave(event) {
         event.preventDefault();
         console.log(this.data-pub_date);
         console.log(this.data-web_url);
         console.log(this.data-headline);
+    }
+    handleSubmit(event) {
+        event.preventDefault();
+        console.log("CLICKED");
+
+        this.setState({
+            results: [
+            {
+              "price": "$$",
+              "phone": "+1512555555",
+              "categories": [
+                {
+                  "alias": "Brazillian"
+                }
+              ],
+              "name": "Boteco",
+              "url": "https://www.yelp.com/biz/boteco-austin-3",
+              "location": {
+                "city": "Austin",
+                "country": "US",
+                "address2": "",
+                "address3": "",
+                "state": "TX",
+                "address1": "1403 E 7th St",
+                "zip_code": "78702"
+              },
+              "distance": 1604.23,
+            },
+            {
+              "price": "$$",
+              "phone": "+14152520800",
+              "categories": [
+                {
+                  "alias": "barbeque"
+                }
+              ],
+              "name": "Franklin Barbecue",
+              "url": "https://www.yelp.com/biz/franklin-barbecue-austin",
+              "location": {
+                "city": "Austin",
+                "country": "US",
+                "address2": "",
+                "address3": "",
+                "state": "TX",
+                "address1": "900 E 11th St",
+                "zip_code": "78702"
+              },
+              "distance": 1604.23,
+            },
+            {
+              "price": "$",
+              "phone": "+14152520800",
+              "categories": [
+                {
+                  "alias": "Halal"
+                }
+              ],
+              "name": "Kismet Cafe",
+              "url": "https://www.yelp.com/biz/kismet-cafe-austin-2",
+              "location": {
+                "city": "Austin",
+                "country": "US",
+                "address2": "Ste 200",
+                "address3": "",
+                "state": "TX",
+                "address1": "1000 E 41st St",
+                "zip_code": "78751"
+              },
+              "distance": 1604.23
+            },
+            {
+              "price": "$",
+              "phone": "+14152520800",
+              "categories": [
+                {
+                  "alias": "American"
+                }
+              ],
+              "name": "Salty Sow",
+              "url": "https://www.yelp.com/biz/salty-sow-austin",
+              "location": {
+                "city": "Austin",
+                "country": "US",
+                "address2": "",
+                "address3": "",
+                "state": "TX",
+                "address1": "1917 Manor Rd",
+                "zip_code": "78722"
+              },
+              "distance": 1604.23
+            }
+
+
+          ]
+        })
     }
 
     render() {
         return(
             <div>
                 <Header/>
-                <UserInput searchYelp={this.searchYelp} />
-                <Filters data={this.state.data} saveArti={this.saveArtis}/>
-                <Results />
+                <UserInput handleSubmit={this.handleSubmit} searchYelp={this.searchYelp} />
+                <Filters results={this.state.results} />
+                <Results results={this.state.results} updateResults={this.updateResults} />
             </div>
         );
     };

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Slider from 'react-rangeslider';
+import Results from './Results';
 
 class UserInput extends Component {
     constructor(){
@@ -12,13 +13,16 @@ class UserInput extends Component {
     }
 
 
+
+
     render(){
         return(
-            // this.props.data.map()
+
             <div className='panel panel-default col-lg-10 col-lg-offset-1'>
                 <div className='panel-heading text-center'>
                     <h2>UserInput</h2>
                 </div>
+                <form onSubmit={this.props.handleSubmit}>
                 <div className='panel-body text-center'>
                      <div className='form-group'>
                         <label className='control-label col-sm-1' htmlFor='zipCode'>zipCode: </label>
@@ -28,7 +32,7 @@ class UserInput extends Component {
                                 name='topic'
                                 id='topic'
                                 type='text'
-                                value={this.state.zipCode}
+                                value={this.props.zipCode}
                                 onChange={
                                     (event) => {
                                         console.log(this.state);
@@ -56,8 +60,9 @@ class UserInput extends Component {
                                 }
                             } />
                     </div>
-                    <button type='submit' className='btn btn-success success' onClick={this.props.searchYelp(this.state.zipCode, this.state.searchRadius)}>Search</button>
+                    <button type='submit' className='btn btn-success success'>Search</button>
                 </div>
+            </form>
             </div>
         )
     }
